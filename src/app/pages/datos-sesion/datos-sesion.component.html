@@ -1,0 +1,179 @@
+
+<div class="container my-5">
+
+  <h2 class="fw-bold">Datos de la sesión</h2>
+
+
+  <div class="borde">
+
+    <div class="borde color-1">
+
+    <!-- <div class="border border-black"></div> -->
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="fw-bold">Fecha <span class="text-danger">*</span></label>
+          <input
+            type="date"
+            class="form-control"
+            aria-describedby="emailHelp"
+            placeholder="Nombre (s)"
+          />
+        </div>
+      </div>
+
+  <div class="col-md-6">
+    
+    <div class="form-group">
+      <label for="inputState" class="fw-bold">Horario <span class="text-danger">*</span></label>
+      <select id="inputState" class="form-control form-select">
+        <option selected>Selecciona una hora</option>
+        <option value="1">10:30 hrs</option>
+        <option value="2">11:00 hrs</option>
+        <option value="3">11:30 hrs</option>
+        <option value="4">12:00 hrs</option>
+        <option value="5">12:30 hrs</option>
+        <option value="6">13:00 hrs</option>
+        <option value="7">13:30 hrs</option>
+      </select>
+    </div>
+    
+  </div>
+
+</div>
+
+    
+
+ 
+
+    <div class="row mt-5 mb-5">
+
+      <div class="col-md-6 d-flex justify-content-center">
+        <label>
+          <input
+            type="radio"
+            name="tipo"
+            value="reunion"/>
+          Reunión
+        </label>
+      </div>
+      
+      <div class="col-md-6 d-flex justify-content-center">
+        <label>
+          <input
+            type="radio"
+            name="tipo"
+            value="audiencia"
+          />
+          Audiencia
+        </label>
+      </div>
+
+    </div>
+  </div>
+  
+
+    
+  
+
+
+    <h4 class="text-center mt-5">
+      Personal de la(s) Unidad(es) Responsable(s) que atenderá la reunión o
+      audiencia.
+    </h4>
+    <p class="text-center">(Maximo 8 personas)</p>
+   
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" class=" fs-5">Nombre completo</th>
+      <th scope="col" class="fs-5">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios; let  i = index" >
+      <td class="fw-bold">{{usuario}}</td>
+      <td>
+        <div class="btns-flex">
+          <div class="btn-margin">
+          </div>
+
+          <button class="btn btn-danger btn-sm" type="button" (click)="eliminarUsuario(usuario)">
+            Eliminar
+          </button>
+        </div>
+      </td>
+
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<select [(ngModel)]="selectedOption" class="form-control form-select">
+  <option value="">Selecciona a un participante</option>
+  <option value="Carlos ballarta">Carlos Ballarta</option>
+  <option value="Raul Jimenez">Raul Jimenez</option>
+  <option value="Santiago Gimenez">Santiago Gimenez</option>
+  <option value="Matias Cervantes">Matias Cervantes</option>
+  <option value="Luis Cortez">Luis Cortez</option>
+  <option value="Maria Bernal">Maria Bernal</option>
+  <option value="Rosario Meneses">Rosario Meneses</option>
+  <option value="Pedro Aquino">Pedro Aquino</option>
+</select>
+
+<div class="mensaje-alerta" *ngIf="usuarios.length >= 8">
+  <p class="alerta">No se pueden agregar más de 8 participantes</p>
+</div>
+
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-center my-5">
+    <button type="button" class="btn btn-warning " (click)="agregarUsuario()">Agregar</button>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value="declaro">
+      Declaro que los datos para llevar a acabo la reunión son correctos y tengo el conocimiento de que estos no podrán ser modificados una vez que sean agendados.
+    </label>
+</div>
+
+
+  <!-- <div class="form-group btn-enviar">
+    <div class="col-sm-offset-3 col-sm-9">
+      <button class="btn btn-success pull-right" type="submit">Enviar</button>
+    </div>
+</div> -->
+
+<!-- <div class="d-grid gap-2 col-6 mx-auto my-5">
+  <button class="btn btn-success" type="button">Enviar</button>
+</div> -->
+
+<!--  -->
+<div class="row mt-5">
+
+  <div class="col-md-12 d-flex justify-content-end">
+    <button class="btn btn-success" type="button">Enviar</button>
+  </div>
+
+</div>
+<!--  -->
+
+
+
+</div>
+  
+
+<!-- Container 2 closed -->
+
+
+
+
+
+
+
+

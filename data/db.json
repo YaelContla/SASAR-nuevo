@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "usuario": "John Doe",
+      "email": "john.due@gmail.com"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 2,
+      "nombre": "Martin Yael",
+      "apellido_paterno": "Contla",
+      "apellido_materno": "Mendizabal"
+    },
+    {
+      "id": 3,
+      "nombre": "Cynthia",
+      "apellido_paterno": "Sanjuan",
+      "apellido_materno": "Hernández"
+    },
+    {
+      "id": 4,
+      "nombre": "Matias",
+      "apellido_paterno": "Contla",
+      "apellido_materno": "Sanjuan"
+    },
+    {
+      "id": 5,
+      "nombre": "Leonel",
+      "apellido_paterno": "Contla",
+      "apellido_materno": "Sanjuan"
+    }
+  ],
+  "horario": [
+    {
+      "id": 20,
+      "fecha": "10/06/2023",
+      "hora": "15:00:00"
+    }
+  ]
+}

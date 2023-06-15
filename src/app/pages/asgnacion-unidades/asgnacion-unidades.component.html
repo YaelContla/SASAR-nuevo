@@ -1,0 +1,121 @@
+<div class="page-content ">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="container mt-3">
+  
+              <p class="fs-2 fw-bold">Asignación de Unidades Administrativas</p>
+          </div>
+          <div class="vertical-space"></div>
+            <div class="row ">
+              <div class="col-lg-12 ">
+                <div class="card-body">
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 mb-3" *ngFor="let option of options">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" [value]="option" id="checklist" 
+                        [checked]="selectedOptions.includes(option)" 
+                        [disabled]="selectedTab === 'sesionInformativa' "
+                        (change)="onCheckboxChange($event, option)">
+  
+                      <label class="form-check-label">{{ option }}</label>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="showError" class="error-message">
+              Seleccione una Unidad Administrativa
+            </div>
+            <div class="vertical-space"></div>
+            <div class="row">
+              <div class="col-lg-12">
+                <ul class="nav nav-tabs mt-3">
+                  <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': selectedTab === 'reunionUnidad'}"
+                      (click)="changeTab('reunionUnidad')">Atención a reunión de una sola Unidad</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': selectedTab === 'reunionVariasUnidades'}"
+                      (click)="changeTab('reunionVariasUnidades')">Atención a reunión dos o más unidades</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': selectedTab === 'sesionInformativa'}"
+                      (click)="changeTab('sesionInformativa')">Atención a sesión informativa</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': selectedTab === 'audienciaUnidad'}"
+                      (click)="changeTab('audienciaUnidad')">Atención a Audiencia una sola Unidad</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': selectedTab === 'audienciaVariasUnidades'}"
+                      (click)="changeTab('audienciaVariasUnidades')">Atención a Audiencia dos o más unidades</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-lg-12 textarea-container">
+                <div class="col-lg-12">
+                  <div *ngIf="selectedTab === 'reunionUnidad'">
+                    <textarea class="form-control mt-3" rows="25"
+                      placeholder="Ingrese la atención a reunión de una sola Unidad">
+  
+            Apreciable Enlace,
+  
+            Se recibió la presente solicitud con folio No. XX de audiencia/reunión por parte de la empresa
+            para tratar el asunto:
+            Le agradezco confirmar la competencia de su Unidad para conocer del asunto en mención,
+            y si el mismo se encuentra o no en trámite
+            En caso de ser competente, favor de informar los nombres y cargos de las personas
+            servidoras públicas adscritas  esa Unidad administrativa, asi como la fecha y horario para
+            atenderla,
+            Favor de responder al presente dentro del plazo de 10 días hábiles a partir de su recepción,
+            por lo que, en caso contrario a partir del dia XX el asunto se considera como rezago de
+            atencion.
+            Asimismo, queda bajo la responsabilidad de la Unidad de su adscripción en caso de no emitir
+            pronunciamiento alguno
+            La fecha de convocatoria deberá estar asignada con un minimo de 48hrs. antes de la fecha
+            establecida de celebracion
+  
+            NOTA: En caso de que la autoridad decida que la audiencia/reunión sea en modalidad
+            presencial, solo podrán acceder a las instalaciones de la Agencia, los participantes por parte
+            del Regulado descritos en el formato de solicitud de cita
+            De antemano, gracias
+            Sin otro particular, reciba un cordial saludo
+          </textarea>
+                  </div>
+                  <div *ngIf="selectedTab === 'reunionVariasUnidades'">
+                    <textarea class="form-control mt-3" rows="25"
+                      placeholder="Ingrese la atención a reunión dos o más unidades"></textarea>
+                      
+                  </div>
+                  <div *ngIf="selectedTab === 'sesionInformativa'">
+                    <textarea class="form-control mt-3" rows="25"
+                      placeholder="Ingrese la atención a sesión informativa"></textarea>
+                  </div>
+                  <div *ngIf="selectedTab === 'audienciaUnidad'">
+                    <textarea class="form-control mt-3" rows="25"
+                      placeholder="Ingrese la atención a Audiencia una sola Unidad"></textarea>
+                  </div>
+                  <div *ngIf="selectedTab === 'audienciaVariasUnidades'">
+                    <textarea class="form-control mt-3" rows="25"
+                      placeholder="Ingrese la atención a Audiencia dos o más unidades"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="vertical-space"></div>
+              <div class="d-flex justify-content-end ">
+                <button class="btn btn-save" (click)="enviar()" routerLink="">Enviar</button>
+              </div>
+              
+  
+          </div>
+        </div>
+      </div>
+    </div>

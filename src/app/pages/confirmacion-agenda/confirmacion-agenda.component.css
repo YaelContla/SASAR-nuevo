@@ -1,0 +1,53 @@
+
+ .borde {
+    border: 1px solid #d0d0d0;
+    padding: 20px;
+}
+
+.flex-tab1 {
+    display: flex;
+    align-items: center;
+}
+
+.margen {
+    margin-top: 100px;
+}
+
+.seccion {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: rgba(70, 63, 62, 0.921);
+}
+
+.color {
+
+    background: rgba(238, 233, 233, 0.597);
+    padding: 40px;
+}
+
+.btn-end {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+.label-input {
+    display: flex;
+    justify-content: start;
+}
+
+/* input{
+    border: 0;
+    outline: none;
+} */
+
+.margin-presencial {
+    padding-top: 20px;
+}
+
+.etiqueta{
+    margin-right: 10px;
+}
+.etiqueta-1{
+    margin-right: 17px;
+}

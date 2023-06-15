@@ -1,0 +1,191 @@
+
+
+<div class="container my-5">
+  
+    <div class="borde">
+  
+      <div class="borde color-1">
+  
+     
+    <!-- Tabs -->
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active fw-bold" aria-current="page" >Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+
+
+    <!-- /tabs -->
+
+        <div class="color">
+            <h2 class="fw-bold">Propuesa Horario</h2>
+
+            <!-- {{ugi}} -->
+
+            <p class="seccion">{{ugi}}</p>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="fw-bold">Fecha</label>
+                        <input type="text" class="form-control" placeholder="12/06/2023" disabled />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="fw-bold">Horario</label>
+                        <select id="inputState" class="form-control" disabled>
+                            <option selected>12:30 hrs</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- {{uaj}} -->
+            <p class="seccion">{{uaj}}</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="fw-bold">Fecha</label>
+                        <input type="text" class="form-control" placeholder="12/06/2023" disabled/>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="fw-bold">Horario</label>
+                        <select id="inputState" class="form-control" disabled>
+                            <option selected>10:30 hrs</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-3">
+                    <div class="form-group">
+                        <label for="inputState" class="fw-bold">Tipo de Reunion<span class="text-danger">*</span></label>
+                        <select id="inputState" name="opcion" class="form-control form-select" [(ngModel)]="opcion" (change)="opcionSeleccionadaOnChange()">
+                            <option selected value="opcion1" >Virtual</option>
+                            <option value="opcion2">Presencial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-3" *ngIf="opcion === 'opcion1'">
+                    <div class="form-group">
+                        <label for="inputState" class="fw-bold">Ingresa link y contraseña de sesión virtual<span class="text-danger">*</span></label>
+                        <div class="margin-presencial">
+                            <div>
+                                <label class="me-3" for="piso">Link Reunion:</label>
+                                <input type="text" id="piso">
+                            </div>
+                            <br>
+                            <div>
+                                <label class="me-4" for="ala">Contraseña:</label>
+                                <input type="text" id="ala">
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                
+                  <div class="col-md-6 mt-3" *ngIf="opcion === 'opcion2'">
+                      <div class="form-group">
+                          <label for="inputState" class="fw-bold">Sesión presencial<span class="text-danger">*</span></label>
+                
+                          
+                          <div class="margin-presencial">
+                              <div>
+                                  <label class="me-3" for="piso">Piso:</label>
+                              
+                                  <input type="text" id="piso">
+                              </div>
+                              <br>
+                              <div>
+                                  <label class="me-4" for="ala">Ala:</label>
+                              
+                                  <input type="text" id="ala">
+                              </div>
+                              <br>
+                              <div>
+                                  <label class="me-3" for="sala">Sala:</label>
+                
+                                  <input type="text" id="sala">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+            </div>
+        </div>
+   
+    </div>
+
+<!-- 2 -->
+<div class="borde color-1">
+  
+     
+    <div class="color">
+       
+        <!-- 3 -->
+        <!-- <div class="row margen color"> -->
+                   
+            <h4>Hora de sesión definitiva</h4>
+
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" aria-describedby="emailHelp"
+                        placeholder="Nombre (s)" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputState">Horario <span class="text-danger">*</span></label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Selecciona una hora</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+</div>
+
+    </div>
+
+
+  
+  <!--  -->
+  <div class="row mt-5">
+  
+    <div class="col-md-12 d-flex justify-content-end">
+      <button class="btn btn-success" type="button">Enviar</button>
+    </div>
+  
+  </div>
+  <!--  -->
+  
+  
+  
+  </div>
+    
+  
+  <!-- Container 2 closed -->
+  
+
+  
+  
+  
+  
+  

@@ -1,0 +1,146 @@
+<div class="container-fluid">
+
+    <div class="page-content">
+
+
+        <div class="row ">
+            <div class="col-lg-12 grid-margin  stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container mt-3">
+
+                            <p class="fs-2 fw-bold">Mi Bandeja</p>
+                        </div>
+                        <div class="container mt-3">
+                            <div class="row mt-3">
+                                <div class="mb-3 col-lg-9 col-12">
+                                    <label for="filter" class="form-label">Buscar</label>
+                                </div>   
+                               
+                                <div class="mb-3 col-lg-3 col-12">
+                                    
+                                    <label for="filter" class="form-label"></label>
+                                </div> 
+                                
+                                    
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="mb-3 col-lg-9 col-12">
+                                    <input class="form-control" name="filterPost" type="search" [(ngModel)] = "filterPost">
+                                </div>
+                                <div class="mb-3 col-lg-3 col-12">
+                                    <select class="btn btn-send dropdown-toggle "  [(ngModel)] = "filterField" (ngModelChange)="cleanSearch()" >                                
+                                        <option class="dropdown-item" value="">Filtro</option>
+                                        <option class="dropdown-item" value="folio">Folio</option>
+                                        <option class="dropdown-item" value="empresa">Nombre de empresa</option>
+                                        <option class="dropdown-item" value="representante">Nombre representante Legal</option>
+                                        <option class="dropdown-item" value="email">Correo Electrónico</option>
+                                      </select>
+                            </div>
+                    
+
+                        </div>
+                        <div class="container mt-3 ">
+                            <div class="card-body col-lg-2 mt-3 ">
+                                <div class="d-flex justify-content-center">
+                                    <a routerLink="/add" class="navbar-brand" >
+                                        <div class="d-flex justify-content-center">
+                                            <i class="icon-newsasar icon feather icon-plus-circle fs-1 "></i>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <p>Nueva Solicitud</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container mt-3">
+                            <div class="row bg-black-sas">
+                                <div class="col">
+                                    <span>Folio</span>
+                                </div>
+                                <div class="col">
+                                    <span>Unidad Responsable</span>
+                                </div>
+                                <div class="col">
+                                    <span>Tipo Solicitud</span>
+                                </div>
+                                <div class="col">
+                                    <span>Empresa</span>
+                                </div>
+                                <div class="col">
+                                    <span>Fecha Solicitud</span>
+                                </div>
+                                <div class="col">
+                                    <span>Nombre Representante Legal</span>
+                                </div>
+                                <div class="col">
+                                    <span>Correo Representante Legal</span>
+                                </div>
+                                <div class="col">
+                                    <span>Estatus</span>
+                                </div>
+                                <div class="col">
+                                    <span>Acciones</span>
+                                </div>
+
+                            </div>
+
+                            <div class=" row mt-2">
+                                <div *ngFor="let solicitud of solicitudes | filter:filterPost:filterField">
+                                    <div class="resultperson row mt-2">
+                                        <div class="col">
+                                            <span>{{solicitud.folio}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <span>{{solicitud.unidadResponsable}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <span>{{solicitud.tipoSolicitud}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <span>{{solicitud.empresa}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <span>{{solicitud.fechaSolicitud}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <span>{{solicitud.nombreRepresentante}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <span>{{solicitud.correoRepresentante}}</span>
+                                        </div>
+                                        <div class="col">   
+                                      
+                                                <span><i class="icon feather icon-circle {{solicitud.estatusSemaforo}}"></i> {{solicitud.estatusDesc}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <i class="icon-editsasar" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="icon feather icon-edit-2"></i>
+                                            </i>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <div *ngFor="let accion of solicitud.accionesList">
+                                                    <li><a class="dropdown-item" href="#" routerLink="{{accion.accionUrl}}">{{accion.accionDesc}}</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                </div>                                            
+                                             
+                                            </ul>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>                              
+                            
+                                      
+                                        
+                                      
+                                      
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

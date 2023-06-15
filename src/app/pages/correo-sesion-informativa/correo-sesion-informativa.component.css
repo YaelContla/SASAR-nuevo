@@ -1,0 +1,42 @@
+.h2{
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+.sasar {
+    margin-top: 80px;
+    padding: 15px 0 10px 0;
+    background: rgba(5, 5, 5, 0.888);
+}
+
+.borde {
+    border: 1px solid #d0d0d0;
+    padding: 20px;
+}
+
+.folio{
+    font-style: italic;
+}
+
+.texto-p {
+    color: white;
+}
+
+.bold {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.link {
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.nota {
+    font-weight: normal;
+}
+
+.btn-large {
+    width: 1020px;
+    height: 55px;
+}

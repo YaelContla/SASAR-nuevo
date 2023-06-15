@@ -1,0 +1,536 @@
+<form [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="page-content">
+
+
+
+
+
+
+
+
+
+        <p class="breadcrumb-item active fw-bold text-dark">Para realizar el llenado del presente formato, deberá ser lo
+            más detallado en sus temas y/o dudas a tratar, con la finalidad de otorgar atención con mayor eficiencia.
+            Así mismo declara que los datos y, en su caso documentos proporcionados son verídicos.</p>
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mb-3 container">
+                            <div class="row">
+                                <div class="form-check form-check-inline col-lg col-3">
+                                    <input formControlName="cre" [class.is.invalid]="crenovalido" type="radio"
+                                        class="form-check-input" value="regulado" name="cre" id="cre1"
+                                        (change)="onCreChange()">
+                                    <label class="form-check-label" for="cre1">
+                                        Regulado
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline col-lg col-3">
+                                    <input formControlName="cre" [class.is.invalid]="crenovalido" type="radio"
+                                        class="form-check-input" value="tercero" name="cre" id="cre2"
+                                        (change)="onCreChange()">
+                                    <label class="form-check-label" for="cre2">
+                                        Tercero
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline col-lg col-3">
+                                    <input formControlName="cre" [class.is.invalid]="crenovalido" type="radio"
+                                        class="form-check-input" value="asociacion" name="cre" id="cre3"
+                                        (change)="onCreChange()">
+                                    <label class="form-check-label" for="cre3">
+                                        Asociación
+                                    </label>
+                                </div>
+                            </div>
+                            <small *ngIf="crenovalido" class="text-danger">Selecciona una opción</small>
+                        </div>
+                        <div class="mb-3 containert">
+                            <div class="row">
+                                <h4 class="card-title col-12 col-lg-6 mt-2">Datos del solicitante</h4>
+                                <div class="col-12 col-lg-6">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="exampleInputDisabled1" class="form-label mt-2">Fecha</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input formControlName="fecha" type="text" class="form-control"
+                                                id="exampleInputDisabled1" [value]="getCurrentDate()" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 container">
+                            <label for="ageSelect" class="form-label">Actividad preponderante</label>
+                            <select formControlName="actividadpreponderante" class="form-select" name="age_select"
+                                id="ageSelect">
+                                <option selected disabled>Selecciona una opción</option>
+                                <option>El reconocimiento y exploración superficial, y la exploración y extracción de
+                                    hidrocarburos </option>
+                                <option>El tratamiento, refinación, enajenación, comercialización, transporte y
+                                    almacenamiento del petróleo</option>
+                                <option>El procesamiento, compresión, licuefacción, descompresión y regasificación, así
+                                    como el transporte, almacenamiento...</option>
+                                <option>El transporte, almacenamiento, distribución y expendio al público de gas licuado
+                                    de petróleo</option>
+                                <option>El transporte, almacenamiento, distribución y expendio al público de
+                                    petrolíferos</option>
+                                <option>El transporte por ducto y el almacenamiento, que se encuentre vinculado a ductos
+                                    de petroquímicos producto del ...</option>
+                                <option>N/A</option>
+                                <option>Otro</option>
+                            </select>
+                            <small *ngIf="actividadpreponderantenovalido" class="text-danger">Selecciona una
+                                opción</small>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="name" class="form-label">Nombre*</label>
+                                    <input [class.is.invalid]="nombrenovalido" formControlName="nombre" maxlength="40"
+                                        id="name" class="form-control ValidLetters mayus-lettter" name="name"
+                                        type="text">
+                                    <small *ngIf="nombrenovalido" class="text-danger">Ingresa tu nombre
+                                        correctamente</small>
+                                </div>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="apelliPat" class="form-label">Primer Apellido*</label>
+                                    <input [class.is.invalid]="apellidoPnovalido" formControlName="apellidoP"
+                                        id="apelliPat" maxlength="40" class="form-control ValidLetters mayus-lettter"
+                                        name="apelliPat" type="name">
+                                    <small *ngIf="apellidoPnovalido" class="text-danger">Ingresa tu apellido
+                                        correctamente</small>
+                                </div>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="apelliMat" class="form-label">Segundo Apellido</label>
+                                    <input [class.is.invalid]="apellidoMnovalido" formControlName="apellidoM"
+                                        id="apelliMat" maxlength="40" class="form-control ValidLetters mayus-lettter"
+                                        name="apelliMat" type="name">
+                                    <small *ngIf="apellidoMnovalido" class="text-danger">Ingresa tu apellido
+                                        correctamente</small>
+                                </div>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="apelliMat" class="form-label">RFC*</label>
+                                    <input [class.is.invalid]="rfcnovalido" formControlName="rfc" id="apelliMat"
+                                        maxlength="13" class="form-control ValidLettersNum mayus-lettter"
+                                        name="apelliMat" type="name">
+                                    <small *ngIf="rfcnovalido" class="text-danger">Ingresa tu RFC correctamente</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="showpermisos" class="mb-3">
+                            <div class="contain-gray container py-3">
+                                <h4>Para poder continuar con el llenado del formato, es obligatorio proporcionar
+                                    la información del permiso CRE (Solo aplica a Regulados)</h4>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div *ngIf="showpermisos" class="row mb-3">
+                                    <div class="col-lg-12">
+                                        <label for="defaultconfig-3" class="col-form-label">Permisos CRE</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input [class.is.invalid]="permisosnovalido" formControlName="permisos"
+                                            class="form-control ValidLetters" maxlength="10" name="defaultconfig-3"
+                                            id="defaultconfig-3" type="text" placeholder="CRE permit">
+                                        <small *ngIf="permisosnovalido" class="text-danger">Ingresa un CRE
+                                            correcto</small>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="col-lg-12">
+                                        <label for="defaultconfig-4" class="col-form-label">Expediente, trámite o
+                                            registro</label>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea [class.is.invalid]="expedientenovalido" maxlength="80"
+                                            formControlName="expediente" id="maxlength-textarea"
+                                            class="form-control heg-4rem ValidLetters" id="defaultconfig-4"
+                                            maxlength="100" rows="8" placeholder="Texto..."></textarea>
+                                        <small *ngIf="expedientenovalido" class="text-danger">Ingresa información
+                                            correcta</small>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="col-lg-12">
+                                        <label for="defaultconfig-4" class="col-form-label">Asunto a tratar</label>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea [class.is.invalid]="asuntonovalido" maxlength="100"
+                                            formControlName="asunto" id="maxlength-textarea"
+                                            class="form-control ValidLetters" id="defaultconfig-4" maxlength="100"
+                                            rows="8" placeholder="Texto..."></textarea>
+                                        <small *ngIf="asuntonovalido" class="text-danger">Ingresa información
+                                            correcta</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row mt-3">
+                                <h2 class="card-title">Datos del representante legal*</h2>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="name" class="form-label">Nombre*</label>
+                                    <input [class.is.invalid]="nombre2novalido" maxlength="40" formControlName="nombre2"
+                                        id="name" class="form-control ValidLetters mayus-lettter" name="name"
+                                        type="text">
+                                    <small *ngIf="nombre2novalido" class="text-danger">Ingresa tu nombre
+                                        correctamente</small>
+                                </div>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="name" class="form-label">Primer Apellido*</label>
+                                    <input [class.is.invalid]="apellidoP2novalido" maxlength="40"
+                                        formControlName="apellidoP2" id="apepat"
+                                        class="form-control ValidLetters mayus-lettter" name="name" type="text">
+                                    <small *ngIf="apellidoP2novalido" class="text-danger">Ingresa tu apellido
+                                        correctamente</small>
+                                </div>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="name" class="form-label">Segundo Apellido</label>
+                                    <input [class.is.invalid]="apellidoM2novalido" maxlength="40"
+                                        formControlName="apellidoM2" id="apemat"
+                                        class="form-control ValidLetters mayus-lettter" name="name" type="text">
+                                    <small *ngIf="apellidoM2novalido" class="text-danger">Ingresa tu apellido
+                                        correctamente</small>
+                                </div>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="name" class="form-label">RFC*</label>
+                                    <input [class.is.invalid]="rfc2novalido" maxlength="13" formControlName="rfc2"
+                                        id="rfc" class="form-control ValidLettersNum mayus-lettter" name="name"
+                                        type="text">
+                                    <small *ngIf="rfc2novalido" class="text-danger">Ingresa tu RFC correctamente</small>
+                                </div>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="email" class="form-label">Correo electrónico*</label>
+                                    <input [class.is.invalid]="correonovalido" maxlength="40" formControlName="correo"
+                                        id="email" class="form-control" name="email" type="email">
+                                    <small *ngIf="correonovalido" class="text-danger">Ingresa un correo electrónico
+                                        valido</small>
+                                </div>
+                                <div class="mb-3 col-lg-6 col-12">
+                                    <label for="email" class="form-label">Confirmación correo electrónico*</label>
+                                    <input [class.is.invalid]="correosnovalido" maxlength="40" formControlName="correos"
+                                        id="email" class="form-control" name="email" type="email">
+                                    <small *ngIf="correosnovalido" class="text-danger">el correo electrónico no coincide
+                                        con el anterior</small>
+                                </div>
+                                <div class="mb-3 col-12 col-lg-6">
+                                    <label class="form-label">Teléfono filo:</label>
+                                    <input [class.is.invalid]="telefononovalido" maxlength="10"
+                                        formControlName="telefono" class="form-control mb-4 mb-md-0 ValidNumber"
+                                        data-inputmask-alias="(+99) 9999-9999" />
+                                    <small *ngIf="telefononovalido" class="text-danger">Ingresa un teléfono
+                                        correctamente</small>
+                                </div>
+                                <div class="mb-3 col-12 col-lg-6">
+                                    <label class="form-label">Teléfono móvil*:</label>
+                                    <input [class.is.invalid]="celularnovalido" maxlength="10" formControlName="celular"
+                                        class="form-control mb-4 mb-md-0 ValidNumber"
+                                        data-inputmask-alias="(+99) 9999-9999" />
+                                    <small *ngIf="celularnovalido" class="text-danger">Ingresa un teléfono móvil
+                                        correctamente</small>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="col-lg-12">
+                                        <label for="defaultconfig-4" class="col-form-label">Documento que acredite su
+                                            personalidad*</label>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea [class.is.invalid]="documentonovalido" maxlength="30"
+                                            formControlName="documento" id="maxlength-textarea"
+                                            class="form-control heg-4rem ValidLetters" id="defaultconfig-4"
+                                            maxlength="100" rows="8" placeholder="Texto..."></textarea>
+                                        <small *ngIf="documentonovalido" class="text-danger">Ingresa nombre de documento
+                                            correcto</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <h2 class="card-title">Participantes (Máximo 5 personas incluyendo al Representante
+                                    legal)</h2>
+                            </div>
+                            <div class="mb-3">
+                                <div *ngIf="showparticipantes" class="contain-max-error container py-3">
+                                    <h4>Se ha alcanzado el máximo de participantes permitidos</h4>
+                                </div>
+                            </div>
+                            <div class="">
+
+                                <div (click)="abrirModal(userForm)"
+                                    [ngStyle]="{'pointer-events': participantes.length >= 5 ? 'none' : '','opacity': participantes.length >= 5 ? '0.4':'1'}"
+                                    data-bs-toggle="modal" class="btn-add content-gray-add"
+                                    data-bs-target="#exampleModal">
+                                    <span>Agregar Participantes <i class="icon feather icon-plus"></i></span>
+                                </div>
+                                <!-- participantes -->
+                                <div class="modal" tabindex="-1" [ngClass]="{'d-block': mostrarModal}">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header content-gray-add">
+
+                                                <h5>Participantes (Máximo 5 personas incluyendo al Representante Legal)
+                                                </h5>
+                                                <button type="button" class="btn-close"
+                                                    (click)="cerrarModal()"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                           
+                                                <form (ngSubmit)="guardarParticipante(participante, userForm) "
+                                                    #userForm="ngForm">
+                                                    <div class="row mt-3">
+                                                        <div class="mb-3 col-lg-6 col-12">
+
+                                                            <label for="name" class="form-label">Nombre(s)</label>
+                                                            <input maxlength="40" type="text"
+                                                                class="form-control ValidLetters mayus-lettter"
+                                                                id="nombre" name="nombre"
+                                                                [(ngModel)]="participante.nombre" required
+                                                                minlength="5">
+
+                                                            <div class="mb-3 col-lg-6 col-12"
+                                                                *ngIf="userForm.controls.nombre.invalid && (userForm.controls.nombre.dirty || userForm.controls.nombre.touched)">
+                                                                <small class="form-text text-danger"
+                                                                    *ngIf="userForm.controls.nombre.errors?.required">El
+                                                                    nombre es obligatorio.</small>
+                                                                <small class="form-text text-danger"
+                                                                    *ngIf="userForm.controls.nombre.errors?.minlength">El
+                                                                    nombre debe tener al menos 5 caracteres.</small>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="mb-3 col-lg-6 col-12">
+                                                            <label for="apellidos"
+                                                                class="form-label">Apellido(s)</label>
+                                                            <input maxlength="40" type="text"
+                                                                class="form-control ValidLetters mayus-lettter"
+                                                                id="apellidos" name="apellidos"
+                                                                [(ngModel)]="participante.apellidos" required>
+                                                            <div class="mb-3 col-lg-6 col-12"
+                                                                *ngIf="userForm.controls.apellidos.invalid && (userForm.controls.apellidos.dirty || userForm.controls.apellidos.touched)">
+                                                                <small class="form-text text-danger"
+                                                                    *ngIf="userForm.controls.apellidos.errors?.required">El
+                                                                    apellido es obligatorio.</small>
+                                                                <small class="form-text text-danger"
+                                                                    *ngIf="userForm.controls.apellidos.errors?.minlength">El
+                                                                    apellido debe tener al menos 5 caracteres.</small>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="mb-3 col-lg-6 col-12 ">
+                                                            <label for="cargo" class="form-label">Cargo</label>
+                                                            <input type="text" class="form-control ValidLetters"
+                                                                id="cargo" name="cargo" [(ngModel)]="participante.cargo"
+                                                                required>
+
+                                                            <div class="mb-3 col-lg-6 col-12"
+                                                                *ngIf="userForm.controls.cargo.invalid && (userForm.controls.cargo.dirty || userForm.controls.cargo.touched)">
+                                                                <small class="form-text text-danger"
+                                                                    *ngIf="userForm.controls.cargo.errors?.required">El
+                                                                    cargo es obligatorio.</small>
+                                                                <small class="form-text text-danger"
+                                                                    *ngIf="userForm.controls.cargo.errors?.minlength">El
+                                                                    cargo debe tener al menos 5 caracteres.</small>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-6 col-12">
+                                                            <label for="compania" class="form-label">Compañía</label>
+                                                            <input type="text" class="form-control ValidLetters"
+                                                                id="compania" name="compania"
+                                                                [(ngModel)]="participante.compania" required>
+                                                        
+                                                        <div class="mb-3 col-lg-6 col-12"
+                                                            *ngIf="userForm.controls.compania.invalid && (userForm.controls.compania.dirty || userForm.controls.compania.touched)">
+                                                            <small class="form-text text-danger"
+                                                                *ngIf="userForm.controls.compania.errors?.required">La
+                                                                compañia es obligatorio.</small>
+                                                            <small class="form-text text-danger"
+                                                                *ngIf="userForm.controls.compania.errors?.minlength">La
+                                                                compañia debe tener al menos 5 caracteres.</small>
+                                                        </div></div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="mb-3 col-lg-6 col-12">
+                                                            <label for="correo" class="form-label">Correo electrónico</label>
+                                                            <input type="email" class="form-control" id="correo"
+                                                                name="correo" [(ngModel)]="participante.correo" required
+                                                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                                                        
+                                                        <div class="mb-3 col-lg-6 col-12"
+                                                            *ngIf="userForm.controls.correo.invalid && (userForm.controls.correo.dirty || userForm.controls.correo.touched)">
+                                                            <small class="form-text text-danger"
+                                                                *ngIf="userForm.controls.correo.errors?.required">El
+                                                                email es obligatorio.</small>
+                                                            <small class="form-text text-danger"
+                                                                *ngIf="userForm.controls.correo.errors?.pattern">El
+                                                                email no es válido.</small>
+                                                          </div>
+                                                        </div>
+                                                        <div class="mb-3 col-lg-6 col-12">
+                                                            <label for="correo2" class="form-label">Confirmación correo electrónico*</label>
+                                                            <input type="email" class="form-control" id="correo2"
+                                                                name="correo2" [(ngModel)]="participante.correo2"
+                                                                required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                                                       
+                                                        <div class="mb-3 col-lg-6 col-12"
+                                                        
+                                                            *ngIf="userForm.controls.correo2.invalid && (userForm.controls.correo2.dirty || userForm.controls.correo2.touched)">
+                                                            <small class="form-text text-danger"
+                                                                *ngIf="userForm.controls.correo2.errors?.required">El
+                                                                email es obligatorio.</small>
+                                                            <small class="form-text text-danger"
+                                                                *ngIf="userForm.controls.correo2.errors?.pattern">El
+                                                                email no es válido.</small>
+                                                        </div> 
+                                                        <div class="" *ngIf="userForm.controls['correo2'].hasError('emailMismatch') && (userForm.controls.correo.dirty || userForm.controls.correo2.dirty)">
+                                                            <small class="form-text text-danger">Los campos de email no coinciden.</small>
+                                                          </div>
+                                                    </div>
+
+                                                    </div>
+
+
+
+
+                                                    <div class="d-flex justify-content-end">
+                                                       <button type="submit" [disabled]="userForm.invalid"
+                                                            class="btn btn-save me-2">{{ modoEdicion ?
+                                                            'Actualizar' : 'Guardar' }}</button>
+                                                    </div>
+                                                 
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Participantes -->
+                                </div>
+
+                            </div>
+                            <div class="container mt-3">
+
+                                <div>
+                                    <div>
+                                        <div class="row bg-black-sas">
+                                            <div class="col">
+                                                <span>Nombre</span>
+                                            </div>
+                                            <div class="col">
+                                                <span>Cargo</span>
+                                            </div>
+                                            <div class="col">
+                                                <span>Compañia</span>
+                                            </div>
+                                            <div class="col">
+                                                <span>Correo</span>
+                                            </div>
+                                            <div class="col"></div>
+                                        </div>
+                                        <div *ngFor="let participante of participantes" class="resultperson row mt-2">
+                                            <div class="col">
+                                                <span>{{ participante.nombre + " " + participante.apellidos}}</span>
+                                            </div>
+                                            <div class="col">
+                                                <span>{{ participante.cargo }}</span>
+                                            </div>
+                                            <div class="col">
+                                                <span>{{ participante.compania }}</span>
+                                            </div>
+                                            <div class="col">
+                                                <span>{{ participante.correo }}</span>
+                                            </div>
+                                            <div class="col row">
+                                                <div class="col-5 icon-editsasar">
+
+                                                    <i class="icon feather icon-edit-2"
+                                                        (click)="editarParticipante(participante)"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                                                </div>
+                                                <div class="col-5 icon-eliminarsasar">
+                                                    <i class="icon feather icon-trash-2"
+                                                        (click)="borrarParticipante(participante)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container content-blue mt-1 text-dark">
+                <b>Con el llenado de este formato el interesado acepta que, de conformidad con la legislación aplicable
+                    en caso de audiencia
+                    podrá ser grabada y el registro publicado en:
+                </b>
+                <a class="linkasea" href="">www.gob.mx.asea</a>
+                <span>By filling out this form the interesed party accepts that, in accordance with the aplicable
+                    legislation in the
+                    eventoof a hearing, it may be recorded and the record published in:
+                </span>
+                <a class="linkasea" href="">www.gob.mx.asea</a>
+            </div>
+            <div class="container mt-3 mb-3 ">
+                <div class="row">
+                    <div class="col-8">
+                        
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check mb-2 ">
+                            <input formControlName="deacuerdo" type="radio" value="desacuerdo" class="form-check-input"
+                                name="deacuerdo" id="deacuerdo">
+                            <label class="form-check-label" for="deacuerdo">
+                                Estoy de acuerdo/ I agree
+                            </label>
+                        </div>
+                    </div>
+                    <small *ngIf="deacuerdonovalido" class="text-danger">Selecciona una opción</small>
+                </div>
+            </div>
+            <div class="container content-blue text-dark">
+                <b>Si identificas algún acto de corrupción por parte de las personas servidoras pública de la ASEA,
+                    ponemos a tu disposición el siguiente correo electrónico:
+                </b>
+                <a class="linkasea" href="">aseacontralacorrupción@asea.gob.mx</a>
+                <span>If you identify any act corruption on the part of ASEA public servants, we make avialable to you
+                    the following email address:
+                </span>
+                <a class="linkasea" href="">aseacontralacorrupción@asea.gob.mx</a>
+            </div>
+            <div class="form-check mt-3 mb-3 text-dark">
+                <div class="col-lg-6 ms-auto">
+                    <input formControlName="declaro" type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">
+                        Declaro bajo protesta decir que la información es véridica.
+                    </label>
+                    <small *ngIf="declaronovalido" class="text-danger">Agrega la verficicación</small>
+                </div>
+            </div>
+            <div class="container row mt-3 mb-3">
+                <!-- <div class="g-recaptcha" data-sitekey="6Lfqj1wmAAAAALPnDbtZ2AryPRUhtECOAdlhBq5S"></div> -->
+                <div class="col-3 ms-auto">
+                    <button type="submit" class="btn btn-send me-2">Enviar solicitud</button>
+                    <!-- routerLink="AcuseRecibido" -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- <div class="container">
+    <pre>Estado del formulario: {{form.valid}}
+        <br>status:{{form.status}}
+    </pre>
+   <pre>
+    {{form.value | json}}
+   </pre>
+</div> -->

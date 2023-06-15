@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sasarintdev-npg-deployment
+  labels:
+    app: sasarintdev-npg 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sasarintdev-npg 
+  template:
+    metadata:
+      labels:
+        app: sasarintdev-npg 
+    spec:
+      containers:
+        - name: sasarintdev-npg 
+          image: portalope.azurecr.io/sasarint
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 80
+# To schedule pods on based on NodeSelectors
+      nodeSelector:
+        agentpool: apppooldev
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sasarintdev-npg-clusterip-service
+  labels:
+    app: sasarintdev-npg
+spec:
+  type: ClusterIP
+  selector:
+    app: sasarintdev-npg
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aseaope-qa-ssl
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt    
+spec:
+  rules:
+    - host: sasarintdev.asea.gob.mx
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sasarintdev-npg-clusterip-service
+                port: 
+                  number: 80
+  tls:
+  - hosts:
+    - sasarintdev.asea.gob.mx
+    secretName: sasarintdev-asea-secret    
+
